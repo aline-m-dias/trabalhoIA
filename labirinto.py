@@ -101,7 +101,7 @@ class aStarFronteira(PilhaFronteira):
                 if i.funcaoAvaliacao() < noMenor.funcaoAvaliacao():
                     noMenor = i
                     
-            self.fronteira = self.fronteira[1:]
+            self.fronteira.remove(noMenor)
             return noMenor
 
         
