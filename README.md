@@ -3,7 +3,7 @@
 ## Participantes
 - [Aline Martins Dias (Aluno)](https://github.com/aline-m-dias)
 - [Daniele Cristina Almeida (Aluno)](https://github.com/8dani)
-  [Gustavo Estevam Sena (Aluno)](https://github.com/Gultes)
+-  [Gustavo Estevam Sena (Aluno)](https://github.com/Gultes)
 - Talles Henrique de Medeiros (Orientador)
 
 ## Objetivos
