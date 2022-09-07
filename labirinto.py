@@ -4,7 +4,7 @@
 
 import sys
 import time
-from scipy.spatial.distance import cityblock
+#from scipy.spatial.distance import cityblock
 
 # Classe No com 3 atributos: estado, pai e ação
 class No():
@@ -247,22 +247,25 @@ class Labirinto():
 # ----------------------
 # Programa Principal 
 # ----------------------
+def main():
 
-if len(sys.argv) != 2:
-    sys.exit("Uso: python labirinto.py labirinto.txt")
+    m = Labirinto ('lab2.txt')
 
-m = Labirinto(sys.argv[1])
-print("Labirinto: ")
-m.print()
-print("Solucionando...")
+    m.print()
 
-t1 = time.time()
-m.solve()
-t2 = time.time()
-tempo_execucao = t2 - t1 
-print("Tempo de Execução: ", tempo_execucao)
+    t1= time.time()
 
-print("Estados Explorados:", m.num_explored)
-print("Solução: ")
-m.print()
-m.output_image("labirinto.png", show_explored=True)
+    m.solve()
+
+    t2=time.time()
+
+
+    print("Estados Explorados: ", m.num_explored)
+    print("Solução: ")
+
+    m.print()
+    m.output_image("labirinto.png", show_explored=True)
+
+    print(t2-t1)
+
+
