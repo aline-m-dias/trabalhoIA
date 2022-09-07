@@ -1,10 +1,10 @@
 # Problema de Busca de um Labirinto Utilizando Algoritmo A*
 
 ## Participantes
-  [Aline Martins Dias (Aluno)](https://github.com/aline-m-dias)
+- [Aline Martins Dias (Aluno)](https://github.com/aline-m-dias)
 - [Daniele Cristina Almeida (Aluno)](https://github.com/8dani)
   [Gustavo Estevam Sena (Aluno)](https://github.com/Gultes)
-- [Talles Henrique de Medeiros(Orientador)]
+- Talles Henrique de Medeiros (Orientador)
 
 ## Objetivos
 - Aplicar os conhecimentos da Busca Informada para resolver um problema de Busca em Labirinto, de forma ótima utilizando uma heurística admissível.
