@@ -4,15 +4,36 @@
 
 import sys
 import time
-#from scipy.spatial.distance import cityblock
+from scipy.spatial.distance import cityblock 
+
+
 
 # Classe No com 3 atributos: estado, pai e ação
 class No():
-    def __init__(self, estado, pai, acao):
+    def __init__(self, estado, pai, acao, noDestino):
         self.estado = estado
         self.pai = pai
         self.acao = acao
+        self.heuristica= cityblock(self.estado,noDestino)
+       
+        # print("Estado =", self.estado)
+        # print("Pai =", self.pai)
+        # print("Acao =", self.acao)
 
+    def custo(self):
+        custo=0
+        no=self
+        
+        while no.pai != None:
+            custo=custo + 1
+            no=no.pai
+        return custo
+            
+    #f(n)= G(n)+ H(n)
+    def funcaoAvaliacao(self):
+        f= self.custo() + self.heuristica
+        return f
+    
 # Classe para tratar Nós Fronteira
 # Deep First Search (DFS)
 class PilhaFronteira():
@@ -54,15 +75,36 @@ class FilaFronteira(PilhaFronteira):
             self.fronteira = self.fronteira[1:]
             return no
 
-class aStarFronteira():
+class aStarFronteira(PilhaFronteira):
     
-    def funcaoHeuristica(noAtual, noDestino):
-        result = cityblock(noAtual, noDestino)
-        print (result)
+    # #g(n)
+    # def custo(self):
+    #     custo=0
+    #     no=self
         
-    def aStar(custo, heuristica):
-        funcao= custo+ heuristica
-        return funcao
+    #     while no.pai != None:
+    #         custo=custo + 1
+    #         no=no.pai
+    #     return custo
+            
+    # #f(n)= G(n)+ H(n)
+    # def funcaoAvaliacao(self):
+    #     f= self.custo() + self.heuristica
+    #     return f
+    
+    def remove(self):
+        if self.empty():
+            raise Exception("fronteira vazia")
+        else:
+            noMenor = self.fronteira[0]
+            
+            for i in self.fronteira:
+                if i.funcaoAvaliacao() < noMenor.funcaoAvaliacao():
+                    noMenor = i
+                    
+            self.fronteira = self.fronteira[1:]
+            return noMenor
+
         
 # Classe do Problema de Busca
 class Labirinto():
@@ -103,6 +145,7 @@ class Labirinto():
                         row.append(True)
                 except IndexError:
                     row.append(False)
+                    
             self.paredes.append(row)
 
         self.solucao = None
@@ -152,10 +195,36 @@ class Labirinto():
         self.num_explored = 0
 
         # Inicializa a fronteira apenas para o posição inicial
-        inicio = No(estado=self.inicio, pai=None, acao=None)
+       
+        inicio = No(estado=self.inicio, pai=None, acao=None, noDestino=self.objetivo)
+        
         fronteira = PilhaFronteira() #Pilha -> Profundidade
-        fronteira.add(inicio)
+        
+        #escolhe o tipo de busca
+        #print ("Qual algoritmo  de busca deseja utilizar para encontrar a solução do labirinto")
+        print('''
+            MENU:
 
+            [1] - Algoritmo de Busca em Largura
+            [2] - Algoritmo de Busca em Profundidade
+            [3] - Algoritmo de Busca A Estrela
+        ''')
+        opcao_escolhida = str(input('Escolha uma opção: '))
+    
+        if opcao_escolhida == '1':
+            fronteira= FilaFronteira()
+        elif opcao_escolhida == '2':
+            print("teste")
+            fronteira= PilhaFronteira()
+        elif opcao_escolhida == '3':
+            fronteira= aStarFronteira()
+        else:
+            print("Valor inválido!!!")
+            
+        
+        fronteira.add(inicio)
+        
+     
         # Inicializa um conjunto vazio de estados não explorados
         self.explored = set()
 
@@ -189,7 +258,7 @@ class Labirinto():
             # Adiciona vizinhos a fronteira
             for acao, estado in self.vizinhos(no.estado):
                 if not fronteira.contem_estado(estado) and estado not in self.explored:
-                    filho = No(estado=estado, pai=no, acao=acao)
+                    filho = No(estado=estado, pai=no, acao=acao, noDestino=self.objetivo)
                     fronteira.add(filho)
 
     # Imprime o labirinto com os estados explorados
@@ -247,25 +316,23 @@ class Labirinto():
 # ----------------------
 # Programa Principal 
 # ----------------------
-def main():
 
-    m = Labirinto ('lab2.txt')
+if len(sys.argv) != 2:
+    sys.exit("Uso: python labirinto.py labirinto.txt")
 
-    m.print()
+m = Labirinto(sys.argv[1])
+print("Labirinto: ")
+m.print()
+print("Solucionando...")
 
-    t1= time.time()
+t1 = time.time()
+m.solve()
+t2 = time.time()
+tempo_execucao = t2 - t1 
+print("Tempo de Execução: ", tempo_execucao)
 
-    m.solve()
-
-    t2=time.time()
-
-
-    print("Estados Explorados: ", m.num_explored)
-    print("Solução: ")
-
-    m.print()
-    m.output_image("labirinto.png", show_explored=True)
-
-    print(t2-t1)
-
+print("Estados Explorados:", m.num_explored)
+print("Solução: ")
+m.print()
+m.output_image("labirinto.png", show_explored=True)
 
