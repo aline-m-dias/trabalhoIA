@@ -7,7 +7,6 @@ import time
 from scipy.spatial.distance import cityblock 
 
 
-
 # Classe No com 3 atributos: estado, pai e ação
 class No():
     def __init__(self, estado, pai, acao, noDestino):
@@ -198,11 +197,10 @@ class Labirinto():
        
         inicio = No(estado=self.inicio, pai=None, acao=None, noDestino=self.objetivo)
         
-        fronteira = PilhaFronteira() #Pilha -> Profundidade
-        
-        #escolhe o tipo de busca
-        #print ("Qual algoritmo  de busca deseja utilizar para encontrar a solução do labirinto")
+        #escolhe o tipo da busca
         print('''
+            Qual algoritmo  de busca deseja utilizar para encontrar a solução do labirinto?
+            
             MENU:
 
             [1] - Algoritmo de Busca em Largura
@@ -213,17 +211,18 @@ class Labirinto():
     
         if opcao_escolhida == '1':
             fronteira= FilaFronteira()
+            print("Solucionando...")
         elif opcao_escolhida == '2':
-            print("teste")
             fronteira= PilhaFronteira()
+            print("Solucionando...")
         elif opcao_escolhida == '3':
             fronteira= aStarFronteira()
+            print("Solucionando...")
         else:
             print("Valor inválido!!!")
-            
-        
+            exit() 
+       
         fronteira.add(inicio)
-        
      
         # Inicializa um conjunto vazio de estados não explorados
         self.explored = set()
@@ -323,7 +322,6 @@ if len(sys.argv) != 2:
 m = Labirinto(sys.argv[1])
 print("Labirinto: ")
 m.print()
-print("Solucionando...")
 
 t1 = time.time()
 m.solve()
