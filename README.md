@@ -19,8 +19,9 @@ O trabalho consiste em resolver o problema de busca em um labirinto utilizando u
 # Clone este repositório
 $ git clone https://github.com/aline-m-dias/trabalhoIA.git
 
-$Com python 3 instalado na máquina
+$Com python 3 instalado na máquina:
 
+# Instale a Python Imaging Library através do comando pip install Pillow
 # Acesse o diretório do projeto pelo Visual Studio Code por exemplo
 $ cd TP01-Busca-Labirinto-IA
 
