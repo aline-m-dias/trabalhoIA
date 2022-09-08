@@ -25,12 +25,28 @@ $Com python 3 instalado na máquina
 $ cd TP01-Busca-Labirinto-IA
 
 # Digite no terminal
-$ Python labirinto.py
+$ Python labirinto.py complexlab1.py
 
-$ou 
-
-# Clique em Run/Run Without Debugging [CTRL + F5]
 ````
 A execução irá retornar em Debug Console a seguinte resposta:
+
+Qual algoritmo  de busca deseja utilizar para encontrar a solução do labirinto?
+
+            MENU:
+
+            [1] - Algoritmo de Busca em Largura
+            [2] - Algoritmo de Busca em Profundidade
+            [3] - Algoritmo de Busca A Estrela
+
 ````
+Escolha uma opção: 3
+Solucionando...
+Tempo de Execução:  1.2424437999725342
+Estados Explorados: 998
+Solução:
+
+````
+![image](https://user-images.githubusercontent.com/72038613/189018375-96acb816-8e11-42ba-a80a-82dbae0c59e4.png)
+````
+
 
