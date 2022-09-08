@@ -1,4 +1,4 @@
-# Problema de Busca de um Labirinto Utilizando Algoritmo A*
+# Problema de Busca em um Labirinto Utilizando Algoritmo A*
 
 ## Participantes
 - [Aline Martins Dias (Aluno)](https://github.com/aline-m-dias)
@@ -11,13 +11,13 @@
 - Reforçar o aprendizado sobre os algoritimos de Busca Informada.
 
 ## Sobre
-O trabalho consiste em resolver o provlema de busca em um labirinto utilizando uma Função de Avaliação para gerenciamento  de Fronteira, através da aplicação do Algoritmo A* sobre o arquivo labirinto.py, projeto disponilizado pelo orientador, contendo a criação do labirinto e resolução utilizando Busca Não Informada (Busca em Profundidade e Busca em Largura)
+O trabalho consiste em resolver o problema de busca em um labirinto utilizando uma Função de Avaliação (f(n) = g(n) + wh(n)) para gerenciamento  de Fronteira, seguido de seu uso no Algoritmo A* sobre o arquivo labirinto.py, um projeto inicial disponilizado pelo orientador, contendo a criação do labirinto e resolução utilizando Busca Não Informada (Busca em Profundidade e Busca em Largura)
 
 ## Run 🏃‍
 
 ```
 # Clone este repositório
-$ git clone https://github.com/gultes/AEDS3-TP02-JS.git
+$ git clone https://github.com/aline-m-dias/trabalhoIA.git
 
 $Com python 3 instalado na máquina
 
