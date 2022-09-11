@@ -179,8 +179,8 @@ class Labirinto():
 
     # Invoca o método solve() para encontrar a solução 
     def solve(self,pesoh):
+        # Encontrar uma solução para labirinto, se existe
         
-
         # Acompanhar o número de estados explorados
         self.num_explored = 0
 
@@ -302,7 +302,6 @@ m = Labirinto(sys.argv[1])
 print("Labirinto: ")
 m.print()
 
-"""Encontrar uma solução para labirinto, se existe."""
 #escolhe o tipo da busca
 print('''
     Qual algoritmo  de busca deseja utilizar para encontrar a solução do labirinto?
