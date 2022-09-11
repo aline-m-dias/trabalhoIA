@@ -325,7 +325,7 @@ if opcao_escolhida == '3':
         print("Busca em A*")
         print("Para peso [w em f(n) = g(n) + wh(n)]: ", p)
         print("Tempo de Execução: ", tempo_execucao)
-        print("Custo do Caminho;", m.custoTotal)
+        print("Custo do Caminho:", m.custoTotal)
         print("Estados Explorados:", m.num_explored)
         print("Solução: ")
         m.print()
@@ -335,7 +335,7 @@ else:
     m.solve(pesoh=1) 
     t2 = time.time()
     tempo_execucao = t2 - t1
-    print("Busca em Largura/Profundidade")
+    print("Busca em Largura(1) ou Busca em Profundidade (2)")
     print("Tempo de Execução: ", tempo_execucao)
     print("Custo do Caminho;", m.custoTotal)
     print("Estados Explorados:", m.num_explored)
