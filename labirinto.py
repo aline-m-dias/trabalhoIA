@@ -180,7 +180,7 @@ class Labirinto():
     # Invoca o método solve() para encontrar a solução 
     def solve(self,pesoh):
         # Encontrar uma solução para labirinto, se existe
-        
+
         # Acompanhar o número de estados explorados
         self.num_explored = 0
 
@@ -316,7 +316,7 @@ print('''
 opcao_escolhida = str(input('Escolha uma opção: '))
     
 if opcao_escolhida == '3':   
-    pesoh = [1, 2, 4, 8, 16, 32]
+    pesoh = [1, 1.1, 1.2, 2, 2.5, 4, 5, 8, 10, 16, 20,32]
     for p in pesoh:
         t1 = time.time()  
         m.solve(pesoh=p) 
